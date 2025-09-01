@@ -1,0 +1,146 @@
+body {
+  display: grid;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main"
+    "footer footer";
+  grid-template-rows: 85px 1fr 100px; /* fixes spacing */
+  grid-template-columns: 250px 1fr;
+  margin: 0;
+  min-height: 100vh; /* min-height is safer with sticky */
+}
+
+nav {
+  grid-area: navbar;
+  display: inline-block;
+  padding: 15px 25px;
+  top: 0; /* required for sticky to do anything */
+  z-index: 10; /* keep it above main content */
+  position: sticky;
+  background: wheat;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.brand-title {
+  display: inline-block;
+  margin: 0px;
+  font-family: Verdana;
+  color: #583218;
+  position: relative;
+  top: -15px;
+  left: 15px;
+}
+
+.links-container {
+  position: relative;
+  float: right;
+  top: 20px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-family: Verdana;
+  margin: 0 15px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* sits just under the text */
+  height: 2px;
+  width: 0; /* hidden by default */
+  background-color: #87462f;
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #87462f;
+}
+
+.link:hover::after {
+  width: 100%; /* grows underline relative to this link only */
+}
+
+aside {
+  grid-area: sidebar;
+  font-family: Verdana;
+  border: 1px solid black;
+  background-color: #f5deb3;
+}
+
+aside h3 {
+  margin-top: 50px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 60px;
+}
+
+.sidebar-list li {
+  margin: 30px 0;
+}
+
+.sidebar-list a {
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-list a:hover {
+  transform: translateX(10px);
+  color: #87462f;
+}
+
+main {
+  grid-area: main;
+  border: 1px solid black;
+  padding: 10px 150px 0px; /* 3 values = top | left/right | bottom */
+  font-family: Verdana;
+}
+
+.menu-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  max-width: 800px; /* control overall row width */
+
+  gap: 20px; /* space between items */
+}
+
+.menu-item {
+  display: inline-flex; /* image + text side by side */
+  align-items: center; /* vertically align text with image */
+  gap: 15px; /* space between image and text */
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 0 10px 10px;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0; /* image doesn’t shrink */
+}
+
+footer {
+  grid-area: footer;
+  border: 1px solid black;
+}
