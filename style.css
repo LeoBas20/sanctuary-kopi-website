@@ -21,6 +21,10 @@ nav {
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
 }
 
+nav a {
+  text-decoration: none;
+}
+
 .brand-title {
   display: inline-block;
   margin: 0px;
@@ -78,6 +82,7 @@ aside h3 {
 }
 
 .sidebar-list {
+  color: black;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -102,7 +107,7 @@ aside h3 {
 main {
   grid-area: main;
   border: 1px solid black;
-  padding: 10px 150px 0px; /* 3 values = top | left/right | bottom */
+  padding: 20px 150px 30px; /* 3 values = top | left/right | bottom */
   font-family: Verdana;
 }
 
@@ -112,8 +117,7 @@ main {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(250px, 1fr));
-  max-width: 800px; /* control overall row width */
-
+  max-width: 1000px; /* control overall row width */
   gap: 20px; /* space between items */
 }
 
