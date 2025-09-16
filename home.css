@@ -1,0 +1,86 @@
+body {
+  display: grid;
+  grid-template-areas:
+    "navbar navbar"
+    "main main"
+    "footer footer";
+  grid-template-rows: 85px 1fr 100px; /* fixes spacing */
+  grid-template-columns: 250px 1fr;
+  margin: 0;
+  min-height: 100vh; /* min-height is safer with sticky */
+}
+
+.brand-title {
+  display: inline-block;
+  margin: 0px;
+  font-family: Verdana;
+  color: #583218;
+  position: relative;
+  top: -15px;
+  left: 15px;
+}
+
+.links-container {
+  position: relative;
+  float: right;
+  top: 20px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-family: Verdana;
+  margin: 0 15px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* sits just under the text */
+  height: 2px;
+  width: 0; /* hidden by default */
+  background-color: #87462f;
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #87462f;
+}
+
+.link:hover::after {
+  width: 100%; /* grows underline relative to this link only */
+}
+
+nav {
+  grid-area: navbar;
+  display: inline-block;
+  padding: 15px 25px;
+  top: 0; /* required for sticky to do anything */
+  z-index: 10; /* keep it above main content */
+  position: sticky;
+  background: wheat;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+main {
+  grid-area: main;
+  border: 1px solid black;
+  padding: 20px 200px 30px; /* 3 values = top | left/right | bottom */
+  font-family: Verdana;
+}
+
+footer {
+  grid-area: footer; /* <-- this makes it part of the grid */
+  background: #87462f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

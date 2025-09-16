@@ -10,6 +10,73 @@ body {
   min-height: 100vh; /* min-height is safer with sticky */
 }
 
+#home {
+  display: grid;
+  grid-template-areas:
+    "navbar navbar"
+    "main main"
+    "footer footer";
+  grid-template-rows: 85px 1fr 100px;
+  grid-template-columns: 1fr;
+}
+
+.feature a {
+  display: inline-block;
+  background: #87462f; /* warm coffee brown */
+  color: #fff8f0; /* soft cream text */
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px; /* pill-shaped, cozy feel */
+  font-family: Verdana, sans-serif;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.feature a:hover {
+  background: #583218; /* darker roast brown */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.feature a:active {
+  transform: translateY(0); /* pressed effect */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #f9f5f0;
+  max-width: 1200px; /* keeps section from stretching too wide */
+  margin: 0 auto; /* centers it */
+  padding: 2rem; /* nice spacing, still scales */
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* allow stacking on small screens */
+}
+
+.feature img {
+  flex: 1 1 300px; /* grow, shrink, but prefer 300px */
+  max-width: 500px; /* don’t let it blow up too big */
+  width: 100%; /* scale inside its flex area */
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.feature-text {
+  flex: 1 1 300px;
+  min-width: 300px; /* prevent text from getting too squished */
+  text-align: center;
+  color: #583218;
+}
+
+.feature.alt {
+  flex-direction: row-reverse; /* flip layout */
+}
+
 nav {
   grid-area: navbar;
   display: inline-block;
