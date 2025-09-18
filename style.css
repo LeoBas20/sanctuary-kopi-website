@@ -10,6 +10,7 @@ body {
   min-height: 100vh; /* min-height is safer with sticky */
 }
 
+/*Home Section */
 #home {
   display: grid;
   grid-template-areas:
@@ -59,7 +60,7 @@ body {
 
 .feature img {
   flex: 1 1 300px; /* grow, shrink, but prefer 300px */
-  max-width: 500px; /* don’t let it blow up too big */
+  max-width: 580px; /* don’t let it blow up too big */
   width: 100%; /* scale inside its flex area */
   height: auto;
   border-radius: 12px;
@@ -75,6 +76,118 @@ body {
 
 .feature.alt {
   flex-direction: row-reverse; /* flip layout */
+}
+
+/* Make the contact page main full-bleed so the hero spans edge-to-edge */
+.page-contact main {
+  padding: 0; /* remove the 200px L/R padding from your default main */
+  border: 0;
+}
+
+/* Add a comfortable container back for the text below the hero */
+.contact-simple {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 60px 20px;
+  background: var(--paper);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Hero banner */
+.image {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+.image .content {
+  position: absolute;
+  color: white;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.image .content h1,
+.image h1 {
+  font-size: 44px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* Details → 3 responsive cards */
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr)); /* ← 3 per row */
+  gap: 70px;
+  justify-items: center;
+  margin-top: 24px;
+  max-width: 1100px; /* keeps the row from getting too wide */
+  margin: 32px auto 0;
+}
+
+.contact-details > div {
+  background-color: #f5deb3;
+  border: 2px solid var(--wheat);
+  border-radius: 12px;
+  padding: 20px 24px;
+  min-width: 220px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease;
+  text-align: center;
+}
+.contact-details > div:hover {
+  background-color: #87462f;
+  border-color: var(--coffee);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.contact-details h3 {
+  color: var(--coffee);
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.contact-details p,
+.contact-details a {
+  color: var(--ink);
+  font-size: 16px;
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 0.25s ease;
+}
+.contact-details > div:hover a,
+.contact-details > div:hover p {
+  color: #000;
+}
+
+/* Email underline micro-interaction */
+.contact-details a {
+  position: relative;
+  padding-bottom: 2px;
+}
+.contact-details a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--coffee);
+  transition: width 0.25s ease;
+}
+.contact-details a:hover::after {
+  width: 100%;
 }
 
 nav {
